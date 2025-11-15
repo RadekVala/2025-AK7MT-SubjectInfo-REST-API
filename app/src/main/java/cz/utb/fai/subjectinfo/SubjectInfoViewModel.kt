@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class SubjectInfoViewModel : ViewModel() {
+class SubjectInfoViewModel(repository: Repository) : ViewModel() {
 
     private val _subjectInfoValue = MutableLiveData<SubjectInfo>()
     val subjectInfoValue: LiveData<SubjectInfo> = _subjectInfoValue
