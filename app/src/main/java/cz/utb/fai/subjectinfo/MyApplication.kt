@@ -16,9 +16,9 @@ class MyApplication : Application() {
         retrofit.create(StagApiService::class.java)
     }
 
-    /*
+
     val repository: Repository by lazy {
         Repository(apiService)
     }
-    */
+
 }
