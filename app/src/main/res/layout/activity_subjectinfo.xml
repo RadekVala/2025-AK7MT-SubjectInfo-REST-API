@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+
         <variable
             name="viewModel"
             type="cz.utb.fai.subjectinfo.SubjectInfoViewModel" />
@@ -16,13 +18,76 @@
         tools:context=".SubjectInfoActivity">
 
         <TextView
+            android:id="@+id/txtLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:layout_marginTop="5dp"
+            android:text="@{ viewModel.subjectInfoValue.nazev }"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSave"
+            app:layout_constraintVertical_bias="0.17000002" />
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="35dp"
+            android:ems="10"
+            android:hint="@string/txtSubject_hint"
+            android:inputType="text"
+            android:text="@={ viewModel.zkratkaMutable }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/btnSave_text"
+            android:onClick="@{ () -> viewModel.search() }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="80dp"
+            android:text="@{ String.valueOf(viewModel.subjectInfoValue.kreditu) }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLabel" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/txtSubjectShorcut_hint"
+            android:textColor="#F44336"
+            app:layout_constraintBottom_toTopOf="@+id/editTextText"
+            app:layout_constraintStart_toStartOf="@+id/editTextText"
+            android:visibility="@{viewModel.showHint ? View.VISIBLE: View.GONE}"
+            />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/subjectInfo_not_found"
+            app:layout_constraintEnd_toEndOf="@+id/editTextText"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText"
+            android:visibility="@{viewModel.showNotFound ? View.VISIBLE: View.GONE}"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
