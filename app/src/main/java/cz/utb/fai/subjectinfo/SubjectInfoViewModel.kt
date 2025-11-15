@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class SubjectInfoViewModel(repository: Repository) : ViewModel() {
+class SubjectInfoViewModel(private val repository: Repository) : ViewModel() {
 
     private val _subjectInfoValue = MutableLiveData<SubjectInfo>()
     val subjectInfoValue: LiveData<SubjectInfo> = _subjectInfoValue
@@ -22,7 +22,7 @@ class SubjectInfoViewModel(repository: Repository) : ViewModel() {
 
 
     fun getSubjectInfo(katedra: String, zkratka: String){
-        /*
+
         viewModelScope.launch {
             val result = repository.getSubjectInfo(katedra, zkratka)
             if(result is SubjectInfo) {
@@ -33,7 +33,7 @@ class SubjectInfoViewModel(repository: Repository) : ViewModel() {
             }
         }
 
-         */
+
     }
 
     fun search () {
