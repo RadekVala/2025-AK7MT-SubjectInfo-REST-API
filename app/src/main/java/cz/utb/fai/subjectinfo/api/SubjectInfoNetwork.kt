@@ -4,6 +4,6 @@ data class SubjectInfoNetwork (
     val nazev: String,
     val katedra: String,
     val zkratka: String,
-    val kreditu: String,
+    val kreditu: Int,
     val anotace: String,
 )

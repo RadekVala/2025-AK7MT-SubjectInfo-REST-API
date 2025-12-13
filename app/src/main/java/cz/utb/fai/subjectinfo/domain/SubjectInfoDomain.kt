@@ -1,4 +1,4 @@
-package cz.utb.fai.subjectinfo.model
+package cz.utb.fai.subjectinfo.domain
 
 data class SubjectInfoDomain(
     val name: String,
