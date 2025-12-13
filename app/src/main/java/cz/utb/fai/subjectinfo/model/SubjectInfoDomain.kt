@@ -1,8 +1,9 @@
 package cz.utb.fai.subjectinfo.model
 
-data class SubjectInfoDomain (
-    val nazev: String,
-    val zkratka: String,
-    val kreditu: Int,
-    val popis: String,
+data class SubjectInfoDomain(
+    val name: String,
+    val shortcut: String,
+    val credits: Int,
+    val description: String,
+    val department: String
 )
