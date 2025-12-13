@@ -22,7 +22,7 @@ class MyApplication : Application() {
     }
 
     val repository: Repository by lazy {
-        Repository(apiService, database)
+        Repository(apiService, database.subjectInfoDao())
     }
 
 }
