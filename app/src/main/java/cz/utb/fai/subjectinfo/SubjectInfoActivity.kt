@@ -1,16 +1,18 @@
 package cz.utb.fai.subjectinfo
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.MaterialTheme
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.viewmodel.viewModelFactory
 import cz.utb.fai.subjectinfo.databinding.ActivitySubjectinfoBinding
 
 class SubjectInfoActivity : AppCompatActivity() {
-    private lateinit var binding: ActivitySubjectinfoBinding
+
 
     // 1. Get the repository instance from the Application class
     private val repository by lazy { (application as MyApplication).repository }
@@ -24,18 +26,14 @@ class SubjectInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        // inicializace binding
-        binding = ActivitySubjectinfoBinding.inflate(layoutInflater)
-        // nastavení layoutu
-        setContentView(binding.root)
-        // propojení VM s XML UI
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContent {
+            // MaterialTheme provides default typography and colors
+            MaterialTheme {
+                SubjectInfoScreen(viewModel = viewModel)
+            }
         }
+
+
     }
 }
