@@ -4,15 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import cz.utb.fai.subjectinfo.model.SubjectInfo
-import kotlinx.coroutines.Dispatchers
+import cz.utb.fai.subjectinfo.model.SubjectInfoDomain
 import kotlinx.coroutines.launch
 
 
 class SubjectInfoViewModel(private val repository: Repository) : ViewModel() {
 
-    private val _subjectInfoValue = MutableLiveData<SubjectInfo>()
-    val subjectInfoValue: LiveData<SubjectInfo> = _subjectInfoValue
+    private val _subjectInfoDomainValue = MutableLiveData<SubjectInfoDomain>()
+    val subjectInfoDomainValue: LiveData<SubjectInfoDomain> = _subjectInfoDomainValue
 
     val showHint = MutableLiveData<Boolean>()
     val showNotFound = MutableLiveData<Boolean>()
@@ -25,8 +24,8 @@ class SubjectInfoViewModel(private val repository: Repository) : ViewModel() {
 
         viewModelScope.launch {
             val result = repository.getSubjectInfo(katedra, zkratka)
-            if(result is SubjectInfo) {
-                _subjectInfoValue.value = result
+            if(result is SubjectInfoDomain) {
+                _subjectInfoDomainValue.value = result
                 showNotFound.value = false
             } else {
                 showNotFound.value = true

@@ -1,6 +1,6 @@
 package cz.utb.fai.subjectinfo.model
 
-data class SubjectInfo (
+data class SubjectInfoDomain (
     val nazev: String,
     val zkratka: String,
     val kreditu: Int,

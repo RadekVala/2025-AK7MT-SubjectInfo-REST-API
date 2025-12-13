@@ -1,6 +1,6 @@
 package cz.utb.fai.subjectinfo.api
 
-import cz.utb.fai.subjectinfo.model.SubjectInfo
+import cz.utb.fai.subjectinfo.model.SubjectInfoDomain
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -20,5 +20,5 @@ interface StagApiService {
         @Query("katedra") katedra: String, // 5. Define a query parameter
         @Query("zkratka") zkratka: String, // 5. Define a query parameter
         @Query("outputFormat") outputFormat: String = "json" // 5. Define a query parameter
-    ): SubjectInfo? // 6. Define the return type
+    ): SubjectInfoDomain? // 6. Define the return type
 }

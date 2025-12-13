@@ -2,10 +2,10 @@ package cz.utb.fai.subjectinfo
 
 import android.util.Log
 import cz.utb.fai.subjectinfo.api.StagApiService
-import cz.utb.fai.subjectinfo.model.SubjectInfo
+import cz.utb.fai.subjectinfo.model.SubjectInfoDomain
 
 class Repository (private val apiService: StagApiService) {
-    suspend fun getSubjectInfo(katedra: String, zkratka: String): SubjectInfo? {
+    suspend fun getSubjectInfo(katedra: String, zkratka: String): SubjectInfoDomain? {
         return try {
             apiService.getSubjectInfo(katedra, zkratka)
         } catch (e: Exception) {
