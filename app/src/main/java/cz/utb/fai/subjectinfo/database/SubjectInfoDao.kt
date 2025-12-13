@@ -10,7 +10,7 @@ interface SubjectInfoDao {
 
     // Using REPLACE strategy so if we fetch updated info for the same subject, it updates the DB
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSubjectInfo(subjectInfo: SubjectInfoEntity)
+    suspend fun insert(subjectInfo: SubjectInfoEntity)
 
     // Select specific subject by shortcut and department (or just shortcut if unique)
     @Query("SELECT * FROM subject_info WHERE shortcut = :shortcut LIMIT 1")
